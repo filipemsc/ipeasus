@@ -1,6 +1,6 @@
-download_sus_dbc <- function(link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", 
-                             regex = "^SP..*",
-                             dir = "sih_sp",
+download_sus_dbc <- function(link_ftp, 
+                             regex,
+                             dir,
                              path = "data"){ 
 
     dbc_dir <- glue::glue("{path}/{dir}/dbc")
