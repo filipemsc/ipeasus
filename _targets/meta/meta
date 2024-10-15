@@ -1,0 +1,8 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+download_sus_dbc|function|5c8e56ad72168950|||||||||||||||
+transform_sus_parquet|function|c78395d4857d9fb8|||||||||||||||
+get_sus_ftp|function|a87c8a03577abe4b|||||||||||||||
+cnes_estabelecimentos|stem||2ddcd87cc3356df0|012c61335345dfa0|-768830009||t20011.7946055292s||0|rds|local|vector|||0.37||Failed to evaluate glue component pathCaused by error in get_sus_ftp argument path is missing, with no default
+download_sus_dbc|function|5c8e56ad72168950
+transform_sus_parquet|function|c78395d4857d9fb8
+get_sus_ftp|function|a87c8a03577abe4b

@@ -11,7 +11,8 @@ get_sus_ftp <- function(link_ftp,
   
   transform_sus_parquet(
     dir = dir,
-    path = path
+    path = path,
+    workers = 14
   )
   
 }
