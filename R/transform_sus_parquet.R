@@ -11,7 +11,7 @@ transform_sus_parquet <- function(path = "data/", dir, workers = 4) {
     dplyr::mutate(file = fs::path_ext_remove(file))
 
   df_queue <- dplyr::full_join(dbc_ls, parquet_ls, by = "file", suffix = c("_dbc", "_parquet")) |>
-    collapse::fsubset(change_time_dbc >= change_time_parquet | is.na(change_time_parquet))
+    dplyr::filter(change_time_dbc >= change_time_parquet | is.na(change_time_parquet))
 
   if (nrow(df_queue) > 0) {
     queue <- df_queue$path_dbc
