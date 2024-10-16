@@ -11,7 +11,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/ST/",
       regex = "ST..*",
       dir = "cnes_st",
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_profissionais,
@@ -19,7 +20,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/PF/",
       regex = "PF..*",
       dir = "cnes_pf"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_estab_ensino,
@@ -27,7 +29,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EE/",
       regex = "EE..*",
       dir = "cnes_ee"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_estab_filantropico,
@@ -35,7 +38,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EF/",
       regex = "EF..*",
       dir = "cnes_ef"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_equipes,
@@ -43,7 +47,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EP/",
       regex = "EP..*",
       dir = "cnes_ep"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_equipamentos,
@@ -51,7 +56,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EQ/",
       regex = "EQ..*",
       dir = "cnes_eq"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_gestao_metas,
@@ -59,7 +65,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/GM/",
       regex = "GM..*",
       dir = "cnes_gm"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_habilitacao,
@@ -67,15 +74,17 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/HB/",
       regex = "HB..*",
       dir = "cnes_hb"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_incentivos,
     command = get_sus_ftp(
-      link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/IN",
+      link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/IN/",
       regex = "IN..*",
       dir = "cnes_in"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_leitos,
@@ -83,7 +92,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/LT/",
       regex = "LT..*",
       dir = "cnes_lt"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_regra_contratual,
@@ -91,7 +101,8 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/RC/",
       regex = "RC..*",
       dir = "cnes_rc"
-    )
+    ),
+    cue = tar_cue(mode="always")
   ),
   tar_target(
     name = cnes_servico_especializado,
@@ -99,6 +110,7 @@ list(
       link_ftp = "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/SR/",
       regex = "SR..*",
       dir = "cnes_sr"
-    )
+    ),
+    cue = tar_cue(mode="always")
   )
 )
