@@ -72,7 +72,7 @@ download_sus_dbc <- function(link_ftp,
       
       data.table::fwrite(download, log_name)
       
-      failed_downloads <- download |> dplyr::filter(isFALSE(success)|is.na(success))
+      failed_downloads <- download |> collapse::fsubset(!success | is.na(success))
       
       if(nrow(failed_downloads)>0){
         
