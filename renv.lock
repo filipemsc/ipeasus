@@ -48,6 +48,17 @@
       ],
       "Hash": "ddbdf53d15b47be4407ede6914f56fbb"
     },
+    "Rcpp": {
+      "Package": "Rcpp",
+      "Version": "1.0.13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods",
+        "utils"
+      ],
+      "Hash": "f27411eb6d9c3dada5edd444b8416675"
+    },
     "arrow": {
       "Package": "arrow",
       "Version": "17.0.0.1",
@@ -164,6 +175,17 @@
         "R"
       ],
       "Hash": "61e097f35917d342622f21cdc79c256e"
+    },
+    "collapse": {
+      "Package": "collapse",
+      "Version": "2.0.16",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp"
+      ],
+      "Hash": "6c44b359839bd71fc5cc7818e1c4a5bb"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -569,7 +591,7 @@
       "Package": "read.dbc",
       "Version": "1.0.7",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://packagemanager.posit.co/cran/2024-07-06",
       "Requirements": [
         "R",
         "foreign"
