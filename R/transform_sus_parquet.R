@@ -1,4 +1,4 @@
-transform_sus_parquet <- function(path = "data/", dir, workers = 4) {
+transform_sus_parquet <- function(path = "data", dir, workers = 4) {
   
   dbc_ls <- fs::dir_info(glue::glue("{path}/{dir}/dbc")) |>
     dplyr::select(path, change_time) |>
