@@ -18,8 +18,9 @@ transform_sus_parquet <- function(path = "data", dir, workers = 4) {
     destfiles <- gsub("dbc", "parquet", queue)
 
     convert_dbc_parquet <- function(file_dbc, file_parquet) {
-      base <- read.dbc::read.dbc(file_dbc, as.is = TRUE)
+      base <- read.dbc::read.dbc(file_dbc)
       base[] <- lapply(base, as.character)
+      base[] <- lapply(base, stringi::stri_unescape_unicode)
       arrow::write_parquet(base, file_parquet)
     }
 
