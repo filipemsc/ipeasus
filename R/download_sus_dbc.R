@@ -85,7 +85,7 @@ download_sus_dbc <- function(link_ftp,
        
         data.table::fwrite(download2, log_name2)
         
-        to_delete <- download2 |> dplyr::filter(isFALSE(success)|is.na(success))
+        to_delete <- download2 |> dplyr::filter(!success|is.na(success))
         
         if(nrow(to_delete)>0){
           
