@@ -1,5 +1,17 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+cnes|object|20ed8d4931a9826d|||||||||||||||
 cnes_estabelecimentos|stem|3e6d6a4dda60d6db|d619ce577d614fdd|012c61335345dfa0|-768830009||t20011.8568846114s|d21be8cf0dd771ce|44|rds|local|vector|||5209.25||
-download_sus_dbc|function|5c8e56ad72168950|||||||||||||||
-get_sus_ftp|function|a87c8a03577abe4b|||||||||||||||
-transform_sus_parquet|function|c78395d4857d9fb8|||||||||||||||
+cnes1|stem||dcb4c4880938c5a8|b7d21f54b2963a96|-2072536496||t20022.9061573839s||0|rds|local|vector|||0.14||ℹ In index 1.ℹ With name estabelecimentos.Caused by error rlangsymnames.x is not a valid symbol name.
+subtars|object|bedc22b18fbb620b|||||||||||||||
+ff|function|0141fbd4c5425fff|||||||||||||||
+main_tar|stem|dc289e2a0a96f052|7e89f03c053b5419|18e5c534989e350c|-1757503195||t20022.9141549093s|0968ba2c0c5b836c|98|rds|local|vector|||0||
+download_sus_dbc|function|e3b896529e6a401f|||||||||||||||
+transform_sus_parquet|function|dec180c4a2843a86|||||||||||||||
+gen_cnes|function|01b42ffda0ad4623|||||||||||||||
+cnes_df|object|ad6fc37b3ae05af2|||||||||||||||
+get_sus_ftp|function|1776b94b6368f0c0|||||||||||||||
+download_sus_dbc|function|e3b896529e6a401f
+transform_sus_parquet|function|dec180c4a2843a86
+gen_cnes|function|01b42ffda0ad4623
+cnes_df|object|ad6fc37b3ae05af2
+get_sus_ftp|function|1776b94b6368f0c0

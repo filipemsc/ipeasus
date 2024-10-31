@@ -32,6 +32,8 @@ list(
     cnes_df,
     names = desc,
     descriptions = NULL,
-    targets::tar_target(cnes, command = get_sus_ftp(url, regex, dir))
+    targets::tar_target(cnes, 
+                        command = get_sus_ftp(url, regex, dir), 
+                        cue = tar_cue(mode="always"))
   )
 )
