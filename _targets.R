@@ -5,7 +5,7 @@ tar_option_set()
 
 tar_source()
 
-gen_cnes <- function(){
+cnes_df <- function(){
   tibble::tribble(
     ~ url                                                              , ~ regex, ~ dir,
     "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/ST/", "ST..*", "cnes_st",
@@ -25,7 +25,33 @@ gen_cnes <- function(){
                empty = "")
 }
 
-cnes_df <- gen_cnes() 
+sinan_prelim_df <- tibble::tribble(
+  ~ url                                                              , ~ regex,   ~ dir,  
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "HIVA..*", "sinan_prelim_hiv_a",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "HIVC..*", "sinan_prelim_hiv_c",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "HIVE..*", "sinan_prelim_hiv_e",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "HIVG..*", "sinan_prelim_hiv_g",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "HEPA..*", "sinan_prelim_hepa",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "SIFA..*", "sinan_prelim_sif_a",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "SIFC..*", "sinan_prelim_sif_c",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "SIFG..*", "sinan_prelim_sif_g",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "VIOL..*", "sinan_prelim_viol",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "ZIKA..*", "sinan_prelim_zika",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "DENG..*", "sinan_prelim_deng",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "AIDA..*", "sinan_prelim_aids_a",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/PRELIM/"   , "AIDC..*", "sinan_prelim_aids_c",  
+) |>
+  dplyr::mutate(desc = gsub("sinan_","",dir))
+
+sih_df <- tibble::tribble(
+  ~ url                                                             , ~ regex, ~ dir,  
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", "^SP..*" , "sih_sp",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", "^RD..*", "sih_rd",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", "^RJ..*", "sih_rj",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", "^ER..*", "sih_er"
+) |>
+  dplyr::mutate(desc = gsub("sih_","",dir))
+
 
 list(
  tar_map(
