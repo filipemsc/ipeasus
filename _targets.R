@@ -5,8 +5,7 @@ tar_option_set()
 
 tar_source()
 
-cnes_df <- function(){
-  tibble::tribble(
+cnes_df <- tibble::tribble(
     ~ url                                                              , ~ regex, ~ dir,
     "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/ST/", "ST..*", "cnes_st",
     "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/PF/", "PF..*", "cnes_pf",
@@ -23,7 +22,6 @@ cnes_df <- function(){
   ) |>
  dplyr::mutate(desc = substring(dir, 6,7),
                empty = "")
-}
 
 sinan_prelim_df <- tibble::tribble(
   ~ url                                                              , ~ regex,   ~ dir,  
