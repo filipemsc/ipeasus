@@ -23,7 +23,8 @@ download_sus_dbc <- function(link_ftp,
                       sep="\\\n{1,}") |>
       tidyr::separate(col=name, 
                       into=c("name","format"),
-                      sep="\\.")
+                      sep="\\.") |>
+      dplyr::filter(format=="dbc"|format == "DBC")
     
     ftp_files <- ftp_files[grep(regex, ftp_files$name),]
     
@@ -53,7 +54,7 @@ download_sus_dbc <- function(link_ftp,
       
       path_files <- merge(path_files, ftp_files, by ="name",suffixes = c("dir","ftp"))
         
-      path_files$need_update <- (path_files$updated_ftp >= path_files$birth_time | path_files$sizedir != path_files$sizeftp)
+      path_files$need_update <- (path_files$updated_ftp >= path_files$modification_time | path_files$sizedir != path_files$sizeftp) #birth_time not functioning in Linux. Check later
       
       need_update <- path_files[path_files$need_update == TRUE,]$name
       
@@ -61,6 +62,19 @@ download_sus_dbc <- function(link_ftp,
       
     }
     
+    files_to_delete <- path_files_names[!path_files_names %in% ftp_files_names]
+    
+    if(length(files_to_delete)>0){
+      
+      files_to_delete <- glue::glue("{path}/{dir}/dbc/{files_to_delete}.dbc")
+      
+      log_name3 <- glue::glue("{path}/{dir}/logs/", janitor::make_clean_names(Sys.time()),"_rm_dbc.csv")
+    
+      data.table::fwrite(data.frame(deleted_files = files_to_delete), log_name3)
+    
+      fs::file_delete(files_to_delete)
+    }
+
     if(length(files_queue)!=0){
       
       links_files_queue <- glue::glue("{link_ftp}{files_queue}.dbc")
