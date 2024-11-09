@@ -46,7 +46,30 @@ sih_df <- tibble::tribble(
   "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/", "^ER..*", "sih_er"
 )
 
-datasus_df <- rbind(cnes_df, sih_df, sinan_prelim_df)
+sim_df <- tibble::tribble(
+  ~url, ~regex, ~dir,
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DORES/", "^DO([^B]|B[^R]).*", "sim_do",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/", "^DOEXT..*", "sim_do_ext",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/", "^DOFET..*", "sim_do_fet",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/", "^DOINF..*", "sim_do_inf",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/", "^DOMAT..*", "sim_do_mat",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/", "^DOREXT..*", "sim_do_rext"
+)
+
+sinasc_df <- tibble::tribble(
+  ~url, ~regex, ~dir,
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/1996_/Dados/DNRES/", "^DN([^E]|E[^X]).*", "sinasc_dn",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/1996_/Dados/DNRES/", "^DNEX..*", "sinasc_dn_ex"
+)
+
+sia_df <- tibble::tribble(
+  ~url, ~regex, ~dir,
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/", "^PA[A-Z]{2}2[0-9]..*", "sia_pa",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/", "^PS[A-Z]{2}2[0-9]..*", "sia_ps",
+  "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/", "^AM[A-Z]{2}2[0-9]..*", "sia_am"
+)
+
+datasus_df <- rbind(sim_df, sinasc_df, cnes_df, sia_df, sih_df, sinan_prelim_df)
 
 list(
   tar_map(
