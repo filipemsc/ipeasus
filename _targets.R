@@ -76,9 +76,13 @@ list(
     datasus_df,
     names = dir,
     descriptions = NULL,
-    targets::tar_target(datasus,
+    tar_target(datasus,
       command = get_sus_ftp(url, regex, dir),
       cue = tar_cue(mode = "always")
     )
+  ),
+  tar_target(
+    sigtap,
+    command = get_sigtap()    
   )
 )

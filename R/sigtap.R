@@ -80,7 +80,9 @@ download_sigtap <- function(dir = "sigtap", path = "data") {
   }
 }
 
-create_sigtap_df <- function(fulldir = "data/sigtap/raw_zip") {
+create_sigtap_df <- function(dir = "sigtap", path = "data") {
+  
+  fulldir <- glue::glue("{path}/{dir}/raw_zip")
   files <- fs::dir_ls(fulldir)
 
   future::plan(future::multisession(), workers = 6)
@@ -165,8 +167,16 @@ create_sigtap_df <- function(fulldir = "data/sigtap/raw_zip") {
     dplyr::select(-DT_COMPETENCIA) |>
     dplyr::summarise_all(~ dplyr::last(.x))
 
-  tibble::tibble(sigtap)
+
+  fs::dir_create(glue::glue("{path}/{dir}/parquet"))
+  fs::dir_create(glue::glue("{path}/{dir}/xlsx"))
+
+  arrow::write_parquet(sigtap, glue::glue("{path}/{dir}/parquet/sigtap.parquet"))
+  writexl::write_xlsx(sigtap, glue::glue("{path}/{dir}/xlsx/sigtap.xlsx"))
+
 }
 
-download_sigtap()
-sigtap <- create_sigtap_df()
+get_sigtap <- function(dir = "sigtap", path = "data"){
+  download_sigtap(dir, path)
+  create_sigtap_df(dir, path)
+}
